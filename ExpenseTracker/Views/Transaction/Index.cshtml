@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ExpenseTracker.Models.Transaction>
+<div class="text-end mt-3 mb-3">
+    <a asp-controller="Dashboard" asp-action="Index"
+       class="btn btn-outline-secondary">
+        ← Back to Dashboard
+    </a>
+    <a  asp-action="Create" class="btn btn-primary">+ Add Transaction</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Note</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Category.Title</td>
+                <td>@item.Amount</td>
+                <td>@item.Note</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TransactionId" class="btn btn-warning me-3">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.TransactionId" class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

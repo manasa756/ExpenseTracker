@@ -1,0 +1,12 @@
+﻿@model ExpenseTracker.Models.Category
+<form asp-action="Delete" method="post">
+    <partial name="_Create" />
+    <input type="hidden" asp-for="CategoryId" />
+
+    <p>
+        Are you sure you want to delete this Category?
+    </p>
+    <button class="btn btn-primary">Yes</button>
+    <a asp-action="Index" class="btn btn-Secondary">No</a>
+
+</form>

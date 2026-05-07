@@ -1,0 +1,16 @@
+﻿@model ExpenseTracker.Models.Transaction
+<form asp-action="Create" method="post">
+   
+
+    <partial name="_TransactionEdit" model="Model" />
+
+    <button type="submit" class="btn btn-success mt-2">Save</button>
+     <a asp-action="Index" class="btn btn-secondary mt-2">Back To Transaction List</a>
+ </form>
+ @section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+ }

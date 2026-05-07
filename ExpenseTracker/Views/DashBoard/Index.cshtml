@@ -1,0 +1,141 @@
+﻿
+@using System.Text.Json
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="row">
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card bg-success text-white p-3">
+            <h4>Total Income</h4>
+            <h2>@ViewBag.Income</h2>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card bg-danger text-white p-3">
+            <h4>Total Expenses</h4>
+            <h2>@ViewBag.Expense</h2>
+        </div>
+        </div>
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card bg-warning text-white p-3">
+                <h4>Total Balance</h4>
+                <h2>@ViewBag.balance</h2>
+            </div>
+    </div>
+    <div class="d-flex flex-column flex-md-row justify-content-end gap-2 mt-3">
+        <a asp-controller="Category" asp-action="Index"
+           class="btn btn-outline-primary btn-sm mt-3 float-end">
+            Category List
+        </a>
+
+        <a asp-controller="Transaction" asp-action="Index"
+           class="btn btn-outline-success btn-sm mt-3 float-end">
+            Transaction List
+        </a>
+
+    </div>
+
+</div>
+<div class="row mt-4">
+
+   
+    <script>
+        var data = @Html.Raw(JsonSerializer.Serialize(ViewBag.CategoryData));
+
+        console.log(data); // check in browser console
+
+        var categoryLabels = data.map(x => x.Category);
+        var categoryAmounts = data.map(x => x.Amount);
+    </script>
+
+    <div class="container mt-4">
+        <div class="row">
+
+            <!-- Expense Chart -->
+            <div class="col-12 col-lg-6 mb-3">
+                <div class="card p-3 shadow h-100">
+                    <h5 class="text-center">Expense Chart</h5>
+
+                    <div class="position-relative" style="height:300px; width:100%;">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Table -->
+            <div class="col-md-6">
+                <div class="card p-3 shadow h-100">
+                    <h5 class="text-center">Expenses by Category</h5>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mt-3">
+                            <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.CategoryData)
+                            {
+                                <tr>
+                                    <td>@item.Category</td>
+                                    <td>@item.Amount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="mt-2">Recent Transactions</h3>
+        <div class="table-responsive">
+<table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in ViewBag.RecentTransactions)
+            {
+                <tr>
+                    <td>@t.Category.Title</td>
+                    <td>@t.Amount</td>
+                    <td>@t.Date.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+<script>
+    var ctx = document.getElementById('expenseChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: categoryLabels,
+            datasets: [{
+                data: categoryAmounts,
+                backgroundColor: [
+                    'red',
+                    'blue',
+                    'green',
+                    'orange',
+                    'purple'
+                ]
+            }]
+        },
+            options: {
+            responsive: true,
+            maintainAspectRatio: false
+            }
+    });
+</script>
+
+   
+

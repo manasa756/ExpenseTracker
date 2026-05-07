@@ -1,0 +1,8 @@
+﻿@model ExpenseTracker.Models.Transaction
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="TransactionId" />
+
+    <partial name="_TransactionEdit" model="Model" />
+    <button type="submit" class="btn btn-primary me-3 mt-2">Update</button>
+    <a class="btn btn-secondary" asp-action="Index" mt-2>Back To Transaction List</a>
+</form>

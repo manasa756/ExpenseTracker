@@ -1,0 +1,24 @@
+﻿@model ExpenseTracker.Models.Transaction
+
+<div>
+    <label asp-for="CategoryId"></label>
+
+    <select asp-for="CategoryId"
+            asp-items="ViewBag.CategoryList"
+            class="form-control">
+        <option value="">-- Select Category --</option>
+    </select>
+
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
+</div>
+
+<div>
+    <label asp-for="Amount"></label>
+    <input asp-for="Amount" class="form-control" />
+    <span asp-validation-for="Amount" class="text-danger"></span>
+</div>
+
+<div>
+    <label asp-for="Note"></label>
+    <input asp-for="Note" class="form-control" />
+</div>

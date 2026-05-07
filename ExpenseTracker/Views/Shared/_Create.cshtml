@@ -1,0 +1,38 @@
+﻿@model ExpenseTracker.Models.Category
+<div>
+    <label asp-for="Title"></label>
+    <input asp-for="Title" class="form-control"/>
+    <span asp-validation-for="Title" class="text-bg-danger"></span>
+</div>
+<div>
+    <label asp-for="Icon"></label>
+
+    <select asp-for="Icon" class="form-control">
+        <option value="">-- Select Icon --</option>
+
+        <optgroup label="Income">
+            <option value="fa-solid fa-briefcase">💼 Salary</option>
+            <option value="fa-solid fa-laptop-code">🧑‍💻 Freelance</option>
+            <option value="fa-solid fa-building">🏢 Business</option>
+            <option value="fa-solid fa-chart-line">📈 Investments</option>
+            <option value="fa-solid fa-gift">🎁 Bonus</option>
+        </optgroup>
+
+        <optgroup label="Expense">
+            <option value="fa-solid fa-utensils">🍽 Food</option>
+            <option value="fa-solid fa-cart-shopping">🛒 Groceries</option>
+            <option value="fa-solid fa-car">🚗 Transport</option>
+            <option value="fa-solid fa-plane">✈ Travel</option>
+            <option value="fa-solid fa-bag-shopping">🛍 Shopping</option>
+            <option value="fa-solid fa-film">🎬 Entertainment</option>
+            <option value="fa-solid fa-hospital">🏥 Health</option>
+        </optgroup>
+    </select>
+</div>
+<div>
+    <label asp-for="Type"></label>
+    <select asp-for="Type" class="form-control">
+    <option value="Expense">Expense</option>
+    <option value="Income">Income</option>
+    </select>
+</div>

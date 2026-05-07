@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- HERO SECTION -->
+<div class="container text-center mt-5 px-3">
+
+    <h1 class="display-5 fw-bold">
+        Take Control of Your Finances 💰
+    </h1>
+
+    <p class="lead text-muted mt-3">
+        Track your expenses, manage your budget,
+        and make smarter financial decisions.
+    </p>
+
+    <div class="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
+
+        <a asp-controller="Account"
+               asp-action="Register"
+               class="btn btn-primary btn-lg">
+            Get Started
+        </a>
+
+        <a asp-controller="Account"
+               asp-action="Login"
+               class="btn btn-outline-dark btn-lg">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+<hr class="my-5" />
+
+<!-- FEATURES SECTION -->
+<div class="container">
+
+    <div class="row g-4 text-center">
+
+        <!-- Card 1 -->
+        <div class="col-12 col-md-4">
+            <div class="card shadow h-100 p-3">
+                <h4>📊 Track Expenses</h4>
+                <p class="text-muted">
+                    Monitor where your money goes daily.
+                </p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-12 col-md-4">
+            <div class="card shadow h-100 p-3">
+                <h4>📁 Categories</h4>
+                <p class="text-muted">
+                    Organize expenses into categories.
+                </p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-12 col-md-4">
+            <div class="card shadow h-100 p-3">
+                <h4>📈 Insights</h4>
+                <p class="text-muted">
+                    Analyze spending and improve savings.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

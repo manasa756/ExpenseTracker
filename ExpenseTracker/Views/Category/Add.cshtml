@@ -1,0 +1,7 @@
+﻿@model ExpenseTracker.Models.Category
+<form asp-action="Add">
+    <h2 class="text-center mb-3">Category Details</h2>
+    <partial name="_Create" />
+    <button type="submit" class="btn btn-primary mt-3 me-4">Save</button>
+    <a  asp-action="Index"class="btn btn-secondary mt-3">cancel</a>
+</form>
